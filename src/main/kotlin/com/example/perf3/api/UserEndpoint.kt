@@ -19,9 +19,11 @@ class UserEndpoint(
     val logger = LoggerFactory.getLogger(UserEndpoint::class.java)
 
     @GetMapping(path = ["/user"])
-    fun getUsers(): List<RawUser> {
+    fun getUsers(): List<GithubUser> {
         logger.info("Request get Users")
-        return service.getUsers()
+        val users = service.getUsers()
+        logger.info("Sending response to client {}", users)
+        return users
     }
 
     @GetMapping(path = ["/async/user"])

@@ -15,14 +15,14 @@ class GithubService(
 
     fun getUser(name: String) = httpClient.getUser(name) ?: RawUser.empty()
 
-    fun getUsers(): List<RawUser> {
-        observable()
-                .subscribe(
-                        { item -> log.info("Log from subscribe={}", item) },
-                        { error -> log.error("Subscribe error", error) },
-                        { log.info("Subscribe done") }
-                )
-        return emptyList()
+    fun getUsers(): List<GithubUser> {
+//        observable()
+//                .subscribe(
+//                        { item -> log.info("Log from subscribe={}", item) },
+//                        { error -> log.error("Subscribe error", error) },
+//                        { log.info("Subscribe done") }
+//                )
+        return observable().toList().blockingGet()
     }
 
     fun getObsUsers() = observable()

@@ -2,5 +2,6 @@
 <configuration>
     <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <logger name="org.springframework.web.client.AsyncRestTemplate" level="DEBUG"/>
+    <logger name="org.springframework.web.servlet.DispatcherServlet" level="DEBUG"/>
     <logger name="com.xebialabs" level="WARN"/>
 </configuration>
