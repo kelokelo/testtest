@@ -3,11 +3,11 @@ package com.example.perf3
 import com.example.perf3.service.github.GithubService
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.springframework.boot.test.context.SpringBootTest
-import org.springframework.test.context.junit4.SpringRunner
-import org.springframework.boot.web.server.LocalServerPort
-import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.boot.test.context.SpringBootTest
+import org.springframework.boot.test.web.client.TestRestTemplate
+import org.springframework.boot.web.server.LocalServerPort
+import org.springframework.test.context.junit4.SpringRunner
 
 
 @RunWith(SpringRunner::class)
@@ -24,20 +24,8 @@ class Perf3ApplicationTests {
     lateinit var githubService: GithubService
 
     @Test
-    fun contextLoads() {
-        val forObject = this.restTemplate
-                .getForObject("http://localhost:$port/user/kelokelo",
-                        String::class.java)
-
-        println(forObject)
-        assert(forObject.contains("id"))
-
-    }
-
-    @Test
-    fun contextLoads2() {
-        githubService.getUsersRX()
-
+    fun getUsers() {
+        githubService.getUsers()
     }
 
 }

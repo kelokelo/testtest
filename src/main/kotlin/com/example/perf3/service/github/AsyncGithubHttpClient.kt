@@ -14,17 +14,10 @@ class AsyncGithubHttpClient(
         val api_github_users: String = "https://api.github.com/users/%s"
 ) {
     val log = LoggerFactory.getLogger(AsyncGithubHttpClient::class.java)
-
-//    val API_GITHUB_USERS = "https://api.github.com/users/%s"
-//    val API_GITHUB_FOLLOWERS = "$API_GITHUB_USERS/followers"
-//    val API_GITHUB_REPOS = "$API_GITHUB_USERS/repos"
-
     private val restTemplate: AsyncRestTemplate = AsyncRestTemplate()
 
     fun getUser(login: String): Observable<RawUser> {
         log.info("Get user {}", login)
-
-
         return Observable.create { s ->
             run {
                 log.info("Create ListenableFuture")
